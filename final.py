@@ -2,31 +2,25 @@
 import streamlit as st
 import re
 
-st.set_page_config(
-    page_title='My Portfolio',
-    page_icon='🚀',
-    layout='wide'
-)
-
-# 2. Inject Custom CSS for Yellow and Blue Theme Integration
+# 2. Inject Custom CSS for Dark Green, Ivory, and Yellow Theme Integration
 st.markdown("""
     <style>
-    /* Main app canvas styling (Deep Midnight Blue) */
+    /* Main app canvas styling (Premium Soft Ivory) */
     .stApp {
-        background-color: #0B132B !important;
-        color: #F9FAFB !important;
+        background-color: #FDFBF7 !important;
+        color: #1C2E24 !important; /* Rich dark forest tone for highly readable text */
     }
     
     /* Global Typography Headers */
     h1, h2, h3, h4 {
-        color: #FFFFFF !important;
+        color: #0B1A12 !important;
         font-weight: 800 !important;
     }
     
-    /* CRITICAL SIDEBAR FIX: Forces deep theme and overrides black text to white */
+    /* CRITICAL SIDEBAR FIX: Forces a deep British Racing Green background with pristine white text */
     section[data-testid="stSidebar"] {
-        background-color: #1C2541 !important;
-        border-right: 1px solid #3A506B !important;
+        background-color: #0B1A12 !important;
+        border-right: 1px solid #1F3A2B !important;
     }
     section[data-testid="stSidebar"] h1, 
     section[data-testid="stSidebar"] h2, 
@@ -35,46 +29,46 @@ st.markdown("""
     section[data-testid="stSidebar"] span, 
     section[data-testid="stSidebar"] label,
     section[data-testid="stSidebar"] a {
-        color: #F9FAFB !important;
-        -webkit-text-fill-color: #F9FAFB !important;
+        color: #FDFBF7 !important; /* Ivory text in sidebar */
+        -webkit-text-fill-color: #FDFBF7 !important;
     }
     
-    /* Layout Cards & Containers (Sleek Slate Blue) */
+    /* Layout Cards & Containers (Subtle, muted sage-tinted ivory background) */
     div[data-testid="stContainer"] {
-        background-color: #1C2541 !important;
-        border: 1px solid #3A506B !important;
+        background-color: #F4F6F0 !important;
+        border: 1px solid #D6DCCB !important;
         border-radius: 16px !important;
-        box-shadow: 0 4px 20px rgba(255, 214, 10, 0.02) !important;
+        box-shadow: 0 4px 20px rgba(11, 26, 18, 0.02) !important;
         padding: 24px !important;
         margin-bottom: 16px;
     }
 
-    /* Minimalist Metric Displays */
+    /* Minimalist Metric Displays (Clean ivory background with thin green accent borders) */
     div[data-testid="stMetric"] {
-        background-color: #0B132B !important;
+        background-color: #FDFBF7 !important;
         padding: 20px;
         border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        border: 1px solid #3A506B !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+        border: 1px solid #0B1A12 !important;
     }
     
-    /* Top Menu Tabs: Active gets Electric Yellow highlights */
+    /* Top Menu Tabs: Active gets a striking gold/yellow line and text focus state */
     button[data-baseweb="tab"] p {
-        color: #9CA3AF !important;
+        color: #607367 !important;
         font-size: 16px !important;
     }
     button[aria-selected="true"] {
-        border-bottom-color: #FFD60A !important; /* Canary Yellow underline */
+        border-bottom-color: #F5B700 !important; /* Premium Matte Gold Yellow underline */
     }
     button[aria-selected="true"] p {
-        color: #FFD60A !important; /* Canary Yellow text */
+        color: #F5B700 !important; /* Premium Matte Gold Yellow text */
         font-weight: 700 !important;
     }
 
-    /* Primary Action Buttons (Vibrant Yellow Gradient with Dark Text for Readability) */
+    /* Primary Action Buttons (Vibrant Gold/Yellow Gradient with a deep forest text for accessibility) */
     button[data-testid="stBaseButton-primary"] {
-        background: linear-gradient(135deg, #FFD60A 0%, #FFC300 100%) !important;
-        color: #0B132B !important; /* Dark text on light background for perfect accessibility */
+        background: linear-gradient(135deg, #F5B700 0%, #F4C430 100%) !important;
+        color: #0B1A12 !important;
         border: none !important;
         border-radius: 8px !important;
         font-weight: bold !important;
@@ -82,28 +76,29 @@ st.markdown("""
     }
     button[data-testid="stBaseButton-primary"]:hover {
         transform: translateY(-2px);
-        box-shadow: 0 0 15px rgba(255, 214, 10, 0.4) !important;
+        box-shadow: 0 4px 12px rgba(245, 183, 0, 0.3) !important;
     }
     
-    /* Secondary Action Buttons (Yellow Wireframe) */
+    /* Secondary Action Buttons (Deep Green Wireframe) */
     button[data-testid="stBaseButton-secondary"] {
-        border: 1px solid #FFD60A !important;
-        color: #FFD60A !important;
+        border: 1px solid #0B1A12 !important;
+        color: #0B1A12 !important;
         background-color: transparent !important;
     }
     button[data-testid="stBaseButton-secondary"]:hover {
-        background-color: rgba(255, 214, 10, 0.1) !important;
+        background-color: rgba(11, 26, 18, 0.05) !important;
     }
     
     /* General Form Widget Inputs Layout Alignment */
     label, div[data-testid="stWidgetLabel"] p {
-        color: #E5E7EB !important;
+        color: #1C2E24 !important;
     }
     div[data-baseweb="popover"] {
-        background-color: #1C2541 !important;
+        background-color: #F4F6F0 !important;
     }
     </style>
 """, unsafe_allow_html=True)
+
 st.title('Welcome to My Portfolio 🚀')
 st.header('Aspiring AI Engineer | SAT & STEM Scholar')
 
