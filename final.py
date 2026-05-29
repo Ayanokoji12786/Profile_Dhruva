@@ -8,6 +8,82 @@ st.set_page_config(
     layout='wide'
 )
 
+# 2. Inject Custom CSS for Cream and Black Theme Integration
+st.markdown("""
+    <style>
+    /* Force crisp gallery cream body canvas layer */
+    .stApp {
+        background-color: #FDFBF7 !important;
+        color: #1F2937 !important;
+    }
+    
+    /* Elegant header styling */
+    h1, h2, h3, h4 {
+        color: #111827 !important;
+        font-weight: 800 !important;
+    }
+    
+    /* Structure containers into clean, minimalist museum-style cards */
+    div[data-testid="stContainer"] {
+        background-color: #F4EFE6 !important;
+        border: 1px solid #E6DEC1 !important;
+        border-radius: 12px !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01) !important;
+        padding: 24px !important;
+        margin-bottom: 16px;
+    }
+
+    /* Professional Metric Cards with a solid dark baseline border */
+    div[data-testid="stMetric"] {
+        background-color: #FDFBF7 !important;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        border: 1px solid #111827 !important;
+    }
+    
+    /* Navigation Tabs: Highlight active routes with structural Black lines */
+    button[data-baseweb="tab"] p {
+        color: #6B7280 !important;
+        font-size: 16px !important;
+    }
+    button[aria-selected="true"] {
+        border-bottom-color: #111827 !important; /* Matte Black line */
+    }
+    button[aria-selected="true"] p {
+        color: #111827 !important; /* Matte Black text */
+        font-weight: 700 !important;
+    }
+
+    /* Turn primary submission buttons into a premium bold Black block element */
+    button[data-testid="stBaseButton-primary"] {
+        background: #111827 !important;
+        color: #FDFBF7 !important;
+        border: 1px solid #111827 !important;
+        border-radius: 6px !important;
+        font-weight: bold !important;
+        transition: all 0.2s ease;
+    }
+    button[data-testid="stBaseButton-primary"]:hover {
+        background: #374151 !important;
+        border-color: #374151 !important;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    /* Style normal interactive widget buttons with a clean minimal wireframe look */
+    button[data-testid="stBaseButton-secondary"] {
+        border: 1px solid #111827 !important;
+        color: #111827 !important;
+        background-color: transparent !important;
+        border-radius: 6px !important;
+    }
+    button[data-testid="stBaseButton-secondary"]:hover {
+        background-color: rgba(17, 24, 39, 0.04) !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 st.title('Welcome to My Portfolio 🚀')
 st.header('Aspiring AI Engineer | SAT & STEM Scholar')
 
@@ -68,267 +144,267 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(['Projects', 'Bio-Data', 'Academics', 'Co
 
 
 with tab1:
-    c1, c2 = st.columns(2)
- 
+    with st.container(border=True):
+       c1, c2 = st.columns(2)
+
     with c1:
- 
+
         st.subheader('- **BMI Calculator**')
- 
+
         st.write("**What is BMI?** 📊")
         st.write("Body Mass Index (BMI) is a measure of body fat based on height and weight. It's a simple screening tool to identify possible weight problems in adults.")
- 
+
         st.write("**The Formula:** 📐")
-        st.write("BMI = Weight (kg) / Height (m)²")
- 
+        st.latex("BMI = Weight (kg) / Height (m)²")
+
         st.write("**How I Built It:** 🛠️")
         st.write("This calculator was built using Python and Streamlit. It takes your weight and height as inputs, converts height to meters, and calculates your BMI using the standard formula. The result is then categorized into different health categories.")
- 
+
     with c2:
- 
+
         with st.expander('Click here to use the calculator'):
             st.subheader("BMI Calculator ⚖️")
             st.write("Calculate your Body Mass Index (BMI)")
- 
+
             col1, col2 = st.columns(2)
- 
+
             with col1:
                 weight = st.number_input("Enter your weight (kg):", min_value=1.0, step=0.1, key="bmi_weight")
- 
+
             with col2:
                 height = st.number_input("Enter your height (cm):", min_value=1.0, step=0.1, key="bmi_height")
- 
+
             if st.button("Calculate BMI", use_container_width=True, key="bmi_btn"):
- 
+
                 height_m = height / 100
                 bmi = weight / (height_m ** 2)
- 
+
                 st.subheader(f"Your BMI: {bmi:.2f}")
- 
+
                 if bmi < 18.5:
                     st.info("📍 Underweight - BMI < 18.5")
- 
+
                 elif 18.5 <= bmi < 25:
                     st.success("✅ Normal Weight - BMI 18.5-24.9")
- 
+
                 elif 25 <= bmi < 30:
                     st.warning("⚠️ Overweight - BMI 25-29.9")
- 
+
                 else:
                     st.error("❌ Obese - BMI ≥ 30")
-    st.divider()
  
- 
-    a1, a2 = st.columns(2)
- 
+    with st.container(border=True):
+      a1, a2 = st.columns(2)
+
     with a1:
- 
+
         st.subheader('- **Unit Conversion Calculator**')
- 
+
         st.write("**What is Unit Conversion?** 🌍")
         st.write("Unit conversion is the process of converting a quantity expressed in one unit of measurement to another unit of the same type. It's essential in science, engineering, cooking, and everyday life.")
- 
+
         st.write("**Key Conversion Formulas:** 📐")
-        st.write("Temperature: °F = (°C × 9/5) + 32")
+        st.latex("Temperature: °F = (°C × 9/5) + 32")
         st.write("Weight: 1 kg = 2.20462 lbs")
         st.write("Length: 1 m = 3.28084 ft")
- 
+
         st.write("**How I Built It:** 🛠️")
         st.write("This converter was built using Python and Streamlit with dropdown menus for selecting conversion types. It provides real-time conversions for temperature, weight, and length with high precision calculations.")
- 
+
     with a2:
- 
+
         with st.expander('Click here to use the converter'):
             st.subheader("Unit Converter 📏")
- 
+
             conversion_type = st.selectbox(
                 "Choose conversion type:",
                 ["Temperature", "Weight", "Length"],
                 key="conversion_type"
             )
- 
+
             value = st.number_input("Enter the value:", key="converter_value")
- 
+
             if conversion_type == "Temperature":
- 
+
                 option = st.selectbox(
                     "Choose conversion:",
                     ["Celsius to Fahrenheit", "Fahrenheit to Celsius"],
                     key="temp_option"
                 )
- 
+
                 if st.button("Convert", key="temp_btn"):
- 
+
                     if option == "Celsius to Fahrenheit":
                         result = (value * 9/5) + 32
                         st.success(f"Converted Value: {result:.2f} °F")
- 
+
                     else:
                         result = (value - 32) * 5/9
                         st.success(f"Converted Value: {result:.2f} °C")
- 
+
             elif conversion_type == "Weight":
- 
+
                 option = st.selectbox(
                     "Choose conversion:",
                     ["Kilograms to Pounds", "Pounds to Kilograms"],
                     key="weight_option"
                 )
- 
+
                 if st.button("Convert", key="weight_btn"):
- 
+
                     if option == "Kilograms to Pounds":
                         result = value * 2.20462
                         st.success(f"Converted Value: {result:.2f} lbs")
- 
+
                     else:
                         result = value / 2.20462
                         st.success(f"Converted Value: {result:.2f} kg")
- 
+
             elif conversion_type == "Length":
- 
+
                 option = st.selectbox(
                     "Choose conversion:",
                     ["Meters to Feet", "Feet to Meters"],
                     key="length_option"
                 )
- 
+
                 if st.button("Convert", key="length_btn"):
- 
+
                     if option == "Meters to Feet":
                         result = value * 3.28084
                         st.success(f"Converted Value: {result:.2f} ft")
- 
+
                     else:
                         result = value / 3.28084
                         st.success(f"Converted Value: {result:.2f} m")
-    st.divider()
-    d1, d2 = st.columns(2)
- 
+    with st.container(border=True):
+
+      d1, d2 = st.columns(2)
+
     with d1:
- 
+
         st.subheader('- **Password Strength Checker**')
- 
+
         st.write("**What is Password Strength?** 🔐")
         st.write("Password strength is a measure of how effective a password is at resisting guessing and brute-force attacks. A strong password includes uppercase, lowercase, numbers, and special characters.")
- 
+
         st.write("**How It Works:** 🛠️")
         st.write("Type a password and the app will check it against criteria like length (8+ characters), numbers, uppercase letters, and special characters. It displays real-time visual feedback with color coding.")
- 
+
         st.write("**Feedback System:** 📊")
         st.write("Red (Weak) - Few criteria met | Orange (Medium) - Most criteria met | Green (Strong) - All criteria met")
- 
+
     with d2:
- 
+
         with st.expander('Click here to check password strength'):
             st.subheader("Password Strength Checker 🔐")
- 
+
             import re
- 
+
             password = st.text_input("Enter a password:", type="password", key="password_input")
- 
+
             if password:
                 strength = 0
                 feedback = []
- 
+
                 if len(password) >= 8:
                     strength += 1
                 else:
                     feedback.append("❌ Password should be at least 8 characters long")
- 
+
                 if re.search(r'[A-Z]', password):
                     strength += 1
                 else:
                     feedback.append("❌ Add uppercase letters (A-Z)")
- 
+
                 if re.search(r'[a-z]', password):
                     strength += 1
                 else:
                     feedback.append("❌ Add lowercase letters (a-z)")
- 
+
                 if re.search(r'[0-9]', password):
                     strength += 1
                 else:
                     feedback.append("❌ Add numbers (0-9)")
- 
+
                 if re.search(r'[!@#$%^&*]', password):
                     strength += 1
                 else:
                     feedback.append("❌ Add special characters (!@#$%^&*)")
- 
+
                 if strength <= 2:
                     st.error("🔴 Weak Password")
                 elif strength <= 3:
                     st.warning("🟠 Medium Password")
                 else:
                     st.success("🟢 Strong Password")
- 
+
                 st.write(f"**Strength Score:** {strength}/5")
- 
+
                 if feedback:
                     st.write("**Suggestions:**")
                     for item in feedback:
                         st.write(item)
-    st.divider()
- 
-    e1, e2 = st.columns(2)
- 
+    with st.container(border=True):
+     e1, e2 = st.columns(2)
+
     with e1:
- 
+
         st.subheader('- **Expense Tracker & Budget Splitter**')
- 
+
         st.write("**What is Expense Splitting?** 💰")
         st.write("Splitting expenses is a way to divide the total cost of a shared bill equally among group members, often including a tip percentage.")
- 
+
         st.write("**How It Works:** 🛠️")
         st.write("Enter the total bill amount, number of people, and tip percentage. The app instantly calculates how much each person should pay including their share of the tip.")
- 
+
         st.write("**Features:** 📊")
         st.write("Real-time calculation | Adjustable tip with slider | Per-person breakdown")
- 
+
     with e2:
- 
+
         with st.expander('Click here to split expenses'):
             st.subheader("Expense Tracker & Budget Splitter 💳")
- 
+
             total_bill = st.number_input("Enter total bill amount (₹):", min_value=0.0, key="total_bill")
- 
+
             num_people = st.number_input("Number of people:", min_value=1, step=1, key="num_people")
- 
+
             tip_percentage = st.slider("Tip percentage (%):", 0, 30, 15, key="tip_slider")
- 
+
             if st.button("Calculate Split", key="split_btn"):
                 tip_amount = (total_bill * tip_percentage) / 100
                 total_with_tip = total_bill + tip_amount
                 per_person = total_with_tip / num_people
- 
+
                 st.info(f"💵 Bill Amount: ₹{total_bill:.2f}")
-                st.info(f"🎁 Tip Amount (₹{tip_percentage}%): ₹{tip_amount:.2f}")
+                st.info(f"🎁 Tip Amount ({tip_percentage}%): ₹{tip_amount:.2f}")
                 st.success(f"✅ Total Amount: ₹{total_with_tip:.2f}")
                 st.success(f"👤 Per Person: ₹{per_person:.2f}")
-    st.divider()
- 
-    f1, f2 = st.columns(2)
- 
+    
+    with st.container(border=True):
+      f1, f2 = st.columns(2)
+
     with f1:
- 
+
         st.subheader('- **Random Word / Quote Generator**')
- 
+
         st.write("**What is Quote Generator?** 💡")
         st.write("A quote generator is a fun utility that displays random inspirational quotes or coding tips to motivate and inspire users.")
- 
+
         st.write("**How It Works:** 🛠️")
         st.write("Click a button and get a random quote from a curated list. Perfect for daily motivation or finding coding inspiration.")
- 
+
         st.write("**Features:** 📊")
         st.write("Random selection | Beautiful formatting | Multiple categories of quotes")
- 
+
     with f2:
- 
+
         with st.expander('Click here to generate quotes'):
             st.subheader("Random Quote Generator 🎯")
- 
+
             import random
- 
+
             quotes = [
                 "The only way to do great work is to love what you do. - Steve Jobs",
                 "Innovation distinguishes between a leader and a follower. - Steve Jobs",
@@ -343,42 +419,42 @@ with tab1:
                 "Don't watch the clock; do what it does. Keep going. - Sam Levenson",
                 "Everything you want is on the other side of fear. - Jack Canfield"
             ]
- 
+
             if st.button("Generate Random Quote", key="quote_btn"):
                 random_quote = random.choice(quotes)
                 st.markdown(f"### ✨ {random_quote} ✨")
-    st.divider()
  
-    g1, g2 = st.columns(2)
- 
+    with st.container(border=True):
+     g1, g2 = st.columns(2)
+
     with g1:
- 
+
         st.subheader('- **Simple To-Do List Application**')
- 
+
         st.write("**What is a To-Do List?** ✅")
         st.write("A to-do list is a simple task management tool that helps you organize, track, and complete your daily tasks efficiently.")
- 
+
         st.write("**How It Works:** 🛠️")
         st.write("Add tasks to your list, check off completed ones, and delete tasks you no longer need. Your tasks are saved as you work.")
- 
+
         st.write("**Features:** 📊")
         st.write("Add new tasks | Mark tasks complete | Delete tasks | Real-time updates")
- 
+
     with g2:
- 
+
         with st.expander('Click here to manage your to-do list'):
             st.subheader("To-Do List Application ✅")
- 
+
             if 'tasks' not in st.session_state:
                 st.session_state.tasks = []
- 
+
             new_task = st.text_input("Add a new task:", key="task_input")
- 
+
             if st.button("Add Task", key="add_task_btn"):
                 if new_task:
                     st.session_state.tasks.append({"task": new_task, "done": False})
                     st.session_state.task_input = ""
- 
+
             if st.session_state.tasks:
                 st.write("**Your Tasks:**")
                 for i, item in enumerate(st.session_state.tasks):
@@ -392,7 +468,8 @@ with tab1:
                             st.rerun()
             else:
                 st.write("No tasks yet. Add one to get started!")
-
+ 
+ 
 with tab2:
 
     with st.container():
@@ -468,17 +545,19 @@ into practical applications.
                 st.write("🚀 Building Streamlit Projects")
                 st.write("🐍 Improving Python Skills")
                 st.write("💡 Exploring Artificial Intelligence and Automation")
-
 with tab3:
-
     with st.container(border=True):
         a1, a2 = st.columns(2)
+    
         with a1:
-            st.metric(label='Grand total', value ='460/470', delta = '97.8%')
+            with st.container(key="metric_card_1"):
+                st.metric(label='Grand total', value ='460/470', delta = '97.8%')
+    
         with a2:
-            st.metric(label='Core STEM subjects', value='267/270', delta= '98.8%')
+            with st.container(key="metric_card_2"):
+                st.metric(label='Core STEM subjects', value='267/270', delta= '98.8%')
 
-        st.header("📊 Academic Performance in CGPA")
+        st.header("📊 Academic Performance")
 
         st.write("**Academic Progress Overview**")
 
