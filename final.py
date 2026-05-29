@@ -8,23 +8,25 @@ st.set_page_config(
     layout='wide'
 )
 
+# 2. Inject Custom CSS for Yellow and Blue Theme Integration
 st.markdown("""
     <style>
-    /* 1. Force the main background layer to be a deep charcoal grey */
+    /* Main app canvas styling (Deep Midnight Blue) */
     .stApp {
-        background-color: #111827 !important;
+        background-color: #0B132B !important;
         color: #F9FAFB !important;
     }
     
-    /* 2. Style main headers inside your tabs */
+    /* Global Typography Headers */
     h1, h2, h3, h4 {
         color: #FFFFFF !important;
         font-weight: 800 !important;
     }
     
-    /* 3. CRITICAL SIDEBAR FIX: Force all sidebar text, links, and subheaders to be bright white */
+    /* CRITICAL SIDEBAR FIX: Forces deep theme and overrides black text to white */
     section[data-testid="stSidebar"] {
-        background-color: #1F2937 !important; /* Lighter carbon grey sidebar background */
+        background-color: #1C2541 !important;
+        border-right: 1px solid #3A506B !important;
     }
     section[data-testid="stSidebar"] h1, 
     section[data-testid="stSidebar"] h2, 
@@ -33,46 +35,46 @@ st.markdown("""
     section[data-testid="stSidebar"] span, 
     section[data-testid="stSidebar"] label,
     section[data-testid="stSidebar"] a {
-        color: #FFFFFF !important; /* Forces text color to white */
-        -webkit-text-fill-color: #FFFFFF !important;
+        color: #F9FAFB !important;
+        -webkit-text-fill-color: #F9FAFB !important;
     }
     
-    /* 4. Wrap your project container cards in slate grey */
+    /* Layout Cards & Containers (Sleek Slate Blue) */
     div[data-testid="stContainer"] {
-        background-color: #1F2937 !important;
-        border: 1px solid #374151 !important;
+        background-color: #1C2541 !important;
+        border: 1px solid #3A506B !important;
         border-radius: 16px !important;
-        box-shadow: 0 4px 20px rgba(217, 70, 239, 0.03) !important;
+        box-shadow: 0 4px 20px rgba(255, 214, 10, 0.02) !important;
         padding: 24px !important;
         margin-bottom: 16px;
     }
 
-    /* 5. Minimalist Metric Cards styling */
+    /* Minimalist Metric Displays */
     div[data-testid="stMetric"] {
-        background-color: #111827 !important;
+        background-color: #0B132B !important;
         padding: 20px;
         border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        border: 1px solid #374151 !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        border: 1px solid #3A506B !important;
     }
     
-    /* 6. Navigation Tabs: Active gets a stunning Fuchsia line and text */
+    /* Top Menu Tabs: Active gets Electric Yellow highlights */
     button[data-baseweb="tab"] p {
         color: #9CA3AF !important;
         font-size: 16px !important;
     }
     button[aria-selected="true"] {
-        border-bottom-color: #D946EF !important; /* Fuchsia indicator line */
+        border-bottom-color: #FFD60A !important; /* Canary Yellow underline */
     }
     button[aria-selected="true"] p {
-        color: #D946EF !important; /* Fuchsia text */
+        color: #FFD60A !important; /* Canary Yellow text */
         font-weight: 700 !important;
     }
 
-    /* 7. Transform the Primary Submission Button into an Electric Fuchsia gradient */
+    /* Primary Action Buttons (Vibrant Yellow Gradient with Dark Text for Readability) */
     button[data-testid="stBaseButton-primary"] {
-        background: linear-gradient(135deg, #D946EF 0%, #A21CAF 100%) !important;
-        color: white !important;
+        background: linear-gradient(135deg, #FFD60A 0%, #FFC300 100%) !important;
+        color: #0B132B !important; /* Dark text on light background for perfect accessibility */
         border: none !important;
         border-radius: 8px !important;
         font-weight: bold !important;
@@ -80,22 +82,25 @@ st.markdown("""
     }
     button[data-testid="stBaseButton-primary"]:hover {
         transform: translateY(-2px);
-        box-shadow: 0 0 15px rgba(217, 70, 239, 0.5) !important;
+        box-shadow: 0 0 15px rgba(255, 214, 10, 0.4) !important;
     }
     
-    /* 8. Style secondary buttons with a clean fuchsia outline look */
+    /* Secondary Action Buttons (Yellow Wireframe) */
     button[data-testid="stBaseButton-secondary"] {
-        border: 1px solid #D946EF !important;
-        color: #D946EF !important;
+        border: 1px solid #FFD60A !important;
+        color: #FFD60A !important;
         background-color: transparent !important;
     }
     button[data-testid="stBaseButton-secondary"]:hover {
-        background-color: rgba(217, 70, 239, 0.1) !important;
+        background-color: rgba(255, 214, 10, 0.1) !important;
     }
     
-    /* 9. Fix generic input label text color styling over dark elements */
+    /* General Form Widget Inputs Layout Alignment */
     label, div[data-testid="stWidgetLabel"] p {
         color: #E5E7EB !important;
+    }
+    div[data-baseweb="popover"] {
+        background-color: #1C2541 !important;
     }
     </style>
 """, unsafe_allow_html=True)
