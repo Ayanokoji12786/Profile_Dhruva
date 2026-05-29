@@ -8,82 +8,97 @@ st.set_page_config(
     layout='wide'
 )
 
-# 2. Inject Custom CSS for Cream and Black Theme Integration
 st.markdown("""
     <style>
-    /* Force crisp gallery cream body canvas layer */
+    /* 1. Force the main background layer to be a deep charcoal grey */
     .stApp {
-        background-color: #FDFBF7 !important;
-        color: #1F2937 !important;
+        background-color: #111827 !important;
+        color: #F9FAFB !important;
     }
     
-    /* Elegant header styling */
+    /* 2. Style main headers inside your tabs */
     h1, h2, h3, h4 {
-        color: #111827 !important;
+        color: #FFFFFF !important;
         font-weight: 800 !important;
     }
     
-    /* Structure containers into clean, minimalist museum-style cards */
+    /* 3. CRITICAL SIDEBAR FIX: Force all sidebar text, links, and subheaders to be bright white */
+    section[data-testid="stSidebar"] {
+        background-color: #1F2937 !important; /* Lighter carbon grey sidebar background */
+    }
+    section[data-testid="stSidebar"] h1, 
+    section[data-testid="stSidebar"] h2, 
+    section[data-testid="stSidebar"] h3, 
+    section[data-testid="stSidebar"] p, 
+    section[data-testid="stSidebar"] span, 
+    section[data-testid="stSidebar"] label,
+    section[data-testid="stSidebar"] a {
+        color: #FFFFFF !important; /* Forces text color to white */
+        -webkit-text-fill-color: #FFFFFF !important;
+    }
+    
+    /* 4. Wrap your project container cards in slate grey */
     div[data-testid="stContainer"] {
-        background-color: #F4EFE6 !important;
-        border: 1px solid #E6DEC1 !important;
-        border-radius: 12px !important;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01) !important;
+        background-color: #1F2937 !important;
+        border: 1px solid #374151 !important;
+        border-radius: 16px !important;
+        box-shadow: 0 4px 20px rgba(217, 70, 239, 0.03) !important;
         padding: 24px !important;
         margin-bottom: 16px;
     }
 
-    /* Professional Metric Cards with a solid dark baseline border */
+    /* 5. Minimalist Metric Cards styling */
     div[data-testid="stMetric"] {
-        background-color: #FDFBF7 !important;
+        background-color: #111827 !important;
         padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
-        border: 1px solid #111827 !important;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        border: 1px solid #374151 !important;
     }
     
-    /* Navigation Tabs: Highlight active routes with structural Black lines */
+    /* 6. Navigation Tabs: Active gets a stunning Fuchsia line and text */
     button[data-baseweb="tab"] p {
-        color: #6B7280 !important;
+        color: #9CA3AF !important;
         font-size: 16px !important;
     }
     button[aria-selected="true"] {
-        border-bottom-color: #111827 !important; /* Matte Black line */
+        border-bottom-color: #D946EF !important; /* Fuchsia indicator line */
     }
     button[aria-selected="true"] p {
-        color: #111827 !important; /* Matte Black text */
+        color: #D946EF !important; /* Fuchsia text */
         font-weight: 700 !important;
     }
 
-    /* Turn primary submission buttons into a premium bold Black block element */
+    /* 7. Transform the Primary Submission Button into an Electric Fuchsia gradient */
     button[data-testid="stBaseButton-primary"] {
-        background: #111827 !important;
-        color: #FDFBF7 !important;
-        border: 1px solid #111827 !important;
-        border-radius: 6px !important;
+        background: linear-gradient(135deg, #D946EF 0%, #A21CAF 100%) !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 8px !important;
         font-weight: bold !important;
-        transition: all 0.2s ease;
+        transition: all 0.3s ease;
     }
     button[data-testid="stBaseButton-primary"]:hover {
-        background: #374151 !important;
-        border-color: #374151 !important;
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+        transform: translateY(-2px);
+        box-shadow: 0 0 15px rgba(217, 70, 239, 0.5) !important;
     }
     
-    /* Style normal interactive widget buttons with a clean minimal wireframe look */
+    /* 8. Style secondary buttons with a clean fuchsia outline look */
     button[data-testid="stBaseButton-secondary"] {
-        border: 1px solid #111827 !important;
-        color: #111827 !important;
+        border: 1px solid #D946EF !important;
+        color: #D946EF !important;
         background-color: transparent !important;
-        border-radius: 6px !important;
     }
     button[data-testid="stBaseButton-secondary"]:hover {
-        background-color: rgba(17, 24, 39, 0.04) !important;
+        background-color: rgba(217, 70, 239, 0.1) !important;
+    }
+    
+    /* 9. Fix generic input label text color styling over dark elements */
+    label, div[data-testid="stWidgetLabel"] p {
+        color: #E5E7EB !important;
     }
     </style>
 """, unsafe_allow_html=True)
-
 st.title('Welcome to My Portfolio 🚀')
 st.header('Aspiring AI Engineer | SAT & STEM Scholar')
 
