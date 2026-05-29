@@ -2,6 +2,7 @@
 import streamlit as st
 import re
 
+# 2. Inject Custom CSS for Dark Green, Ivory, and Yellow Theme Integration
 st.markdown("""
     <style>
     /* Main app canvas styling (Premium Soft Ivory) */
@@ -16,27 +17,30 @@ st.markdown("""
         font-weight: 800 !important;
     }
     
-    /* 🛠️ TOP HEADER FIX: Forces upper action icons (Share, Edit, Menu) to stay visible in Dark Mode */
+    /* 🛠️ ULTIMATE TOP HEADER FIX: Forces action icons to stay dark green even when Streamlit switches to Dark Mode */
     header[data-testid="stHeader"], 
     section[data-testid="stHeader"],
-    div[data-testid="stHeaderActionElements"] {
+    div[data-testid="stHeaderActionElements"],
+    [data-theme="dark"] header[data-testid="stHeader"],
+    [data-theme="light"] header[data-testid="stHeader"] {
         background-color: transparent !important;
     }
+
+    /* Force visibility rules for text, buttons, and SVGs across ALL theme states */
     header[data-testid="stHeader"] button, 
     header[data-testid="stHeader"] a, 
     header[data-testid="stHeader"] svg,
     div[data-testid="stHeaderActionElements"] button,
     div[data-testid="stHeaderActionElements"] a,
-    div[data-testid="stHeaderActionElements"] svg {
-        color: #1C2E24 !important;
-        fill: #1C2E24 !important;
-    }
-    /* Dynamic override if the browser/system forces a dark theme context */
+    div[data-testid="stHeaderActionElements"] svg,
     [data-theme="dark"] header[data-testid="stHeader"] button,
     [data-theme="dark"] header[data-testid="stHeader"] a,
-    [data-theme="dark"] header[data-testid="stHeader"] svg {
-        color: #FDFBF7 !important;
-        fill: #FDFBF7 !important;
+    [data-theme="dark"] header[data-testid="stHeader"] svg,
+    [data-theme="dark"] div[data-testid="stHeaderActionElements"] button,
+    [data-theme="dark"] div[data-testid="stHeaderActionElements"] svg {
+        color: #1C2E24 !important;
+        fill: #1C2E24 !important;
+        -webkit-text-fill-color: #1C2E24 !important;
     }
     
     /* CRITICAL SIDEBAR FIX: Forces a deep British Racing Green background with pristine white text */
