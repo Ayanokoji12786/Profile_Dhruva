@@ -2,7 +2,6 @@
 import streamlit as st
 import re
 
-# 2. Inject Custom CSS for Dark Green, Ivory, and Yellow Theme Integration
 st.markdown("""
     <style>
     /* Main app canvas styling (Premium Soft Ivory) */
@@ -15,6 +14,29 @@ st.markdown("""
     h1, h2, h3, h4 {
         color: #0B1A12 !important;
         font-weight: 800 !important;
+    }
+    
+    /* 🛠️ TOP HEADER FIX: Forces upper action icons (Share, Edit, Menu) to stay visible in Dark Mode */
+    header[data-testid="stHeader"], 
+    section[data-testid="stHeader"],
+    div[data-testid="stHeaderActionElements"] {
+        background-color: transparent !important;
+    }
+    header[data-testid="stHeader"] button, 
+    header[data-testid="stHeader"] a, 
+    header[data-testid="stHeader"] svg,
+    div[data-testid="stHeaderActionElements"] button,
+    div[data-testid="stHeaderActionElements"] a,
+    div[data-testid="stHeaderActionElements"] svg {
+        color: #1C2E24 !important;
+        fill: #1C2E24 !important;
+    }
+    /* Dynamic override if the browser/system forces a dark theme context */
+    [data-theme="dark"] header[data-testid="stHeader"] button,
+    [data-theme="dark"] header[data-testid="stHeader"] a,
+    [data-theme="dark"] header[data-testid="stHeader"] svg {
+        color: #FDFBF7 !important;
+        fill: #FDFBF7 !important;
     }
     
     /* CRITICAL SIDEBAR FIX: Forces a deep British Racing Green background with pristine white text */
