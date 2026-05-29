@@ -2,7 +2,6 @@
 import streamlit as st
 import re
 
-# 2. Inject Custom CSS for Dark Green, Ivory, and Yellow Theme Integration
 st.markdown("""
     <style>
     /* Main app canvas styling (Premium Soft Ivory) */
@@ -17,7 +16,7 @@ st.markdown("""
         font-weight: 800 !important;
     }
     
-    /* 🛠️ ULTIMATE TOP HEADER FIX: Forces action icons to stay dark green even when Streamlit switches to Dark Mode */
+    /* 🛠️ FIX 1: Forces top action icons (Share, Edit, Star, GitHub, Menu) to stay dark green across all theme modes */
     header[data-testid="stHeader"], 
     section[data-testid="stHeader"],
     div[data-testid="stHeaderActionElements"],
@@ -26,7 +25,6 @@ st.markdown("""
         background-color: transparent !important;
     }
 
-    /* Force visibility rules for text, buttons, and SVGs across ALL theme states */
     header[data-testid="stHeader"] button, 
     header[data-testid="stHeader"] a, 
     header[data-testid="stHeader"] svg,
@@ -43,7 +41,7 @@ st.markdown("""
         -webkit-text-fill-color: #1C2E24 !important;
     }
     
-    /* CRITICAL SIDEBAR FIX: Forces a deep British Racing Green background with pristine white text */
+    /* 🛠️ FIX 2: Forces sidebar background to deep British Racing Green and ALL text/lists to pristine ivory */
     section[data-testid="stSidebar"] {
         background-color: #0B1A12 !important;
         border-right: 1px solid #1F3A2B !important;
@@ -54,8 +52,10 @@ st.markdown("""
     section[data-testid="stSidebar"] p, 
     section[data-testid="stSidebar"] span, 
     section[data-testid="stSidebar"] label,
+    section[data-testid="stSidebar"] ul, 
+    section[data-testid="stSidebar"] li, 
     section[data-testid="stSidebar"] a {
-        color: #FDFBF7 !important; /* Ivory text in sidebar */
+        color: #FDFBF7 !important; 
         -webkit-text-fill-color: #FDFBF7 !important;
     }
     
