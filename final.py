@@ -21,7 +21,7 @@ with st.sidebar:
 
     st.header('Dhruva')
 
-    st.image('/Users/MAC/Desktop/py learning folder 2/GIT Hub project final/PHOTO-2026-05-29-16-03-12.jpg')
+    st.image('https://cdn.vectorstock.com/i/500p/81/62/grey-business-avatar-placeholder-vector-38508162.jpg')
 
     st.caption('🎓 | 11th Grade Student')
     st.caption('🚀 | AI Enthusiast')
@@ -441,7 +441,7 @@ into practical applications.
 
             st.markdown(":blue[**Dhruva**]")
 
-            st.image("/Users/MAC/Desktop/py learning folder 2/GIT Hub project final/PHOTO-2026-05-29-16-06-19.jpg",caption="Coding, Innovation, and Continuous Learning")
+            st.image("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png",caption="Coding, Innovation, and Continuous Learning")
 
         st.divider()
 
